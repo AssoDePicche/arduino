@@ -1,4 +1,4 @@
-FILENAME        = blink
+FILENAME        =
 BAUD            = 115200
 USB_PORT        = COM3
 DEVICE          = atmega328p
@@ -16,9 +16,9 @@ compile:
 	avr-size $(FILENAME).elf
 
 upload:
-	avrdude -v -p $(DEVICE) -c $(PROGRAMMER) -P $(USB_PORT) -b $(BAUD) -U flash:w:$(FILENAME).hex:i
+	avrdude -v -p $(DEVICE) -F -V -c $(PROGRAMMER) -P $(USB_PORT) -b $(BAUD) -U flash:w:$(FILENAME).hex:i
 
 clean:
-	rm -f $(FILENAME).o
-	rm -f $(FILENAME).elf
-	rm -f $(FILENAME).hex
+	rm -f src/*/*.o
+	rm -f src/*/*.elf
+	rm -f src/*/*.hex
